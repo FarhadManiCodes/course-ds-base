@@ -75,8 +75,8 @@ stages:
       md5: ed8a7e5ba0a211251bdee6c498fe3eb4
       size: 5724
     - path: src/stages/train.py
-      md5: 0f01f271bc8169c69ce724f19eacde07
-      size: 1371
+      md5: 3296dcabf91da3451f6ca3120c0fccac
+      size: 1400
     params:
       params.yaml:
         base:
@@ -85,13 +85,15 @@ stages:
         data_split.trainset_path: data/processed/train_iris.csv
         featurize.target_column: target
         train:
-          cv: 3
+          cv: 4
           estimator_name: logreg
           estimators:
             logreg:
               param_grid:
                 C:
                 - 0.001
+                - 0.01
+                - 0.1
                 max_iter:
                 - 100
                 solver:
@@ -114,8 +116,8 @@ stages:
           model_path: models/model.joblib
     outs:
     - path: models/model.joblib
-      md5: b1cd62c91ba35301659a9137577fb5b9
-      size: 2669
+      md5: e0c59fe209aa2682d1baabf5801c2d78
+      size: 3027
   evaluate:
     cmd: python -m src.stages.evaluate --config=params.yaml
     deps:
@@ -123,8 +125,8 @@ stages:
       md5: b5e45593a772fc66629488e1806505c4
       size: 1492
     - path: models/model.joblib
-      md5: b1cd62c91ba35301659a9137577fb5b9
-      size: 2669
+      md5: e0c59fe209aa2682d1baabf5801c2d78
+      size: 3027
     - path: src/stages/evaluate.py
       md5: e845a44aa40bffa0b20b08a7d854e999
       size: 2358
@@ -141,8 +143,8 @@ stages:
         featurize.target_column: target
     outs:
     - path: reports/confusion_matrix.png
-      md5: 64609d4d2fe8d2718531f253d881dde6
-      size: 24999
+      md5: 22d55154d10818eb51520e947cfc7e62
+      size: 24920
     - path: reports/metrics.json
-      md5: d533847a0ca14ca93752b1b1f1df349e
-      size: 32
+      md5: 3329ba1a6b18407f725a1e25a5500560
+      size: 17
