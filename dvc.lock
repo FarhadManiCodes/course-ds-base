@@ -5,7 +5,7 @@ stages:
     deps:
     - path: src/stages/data_load.py
       md5: ebc71be562bef12448a953eae1f8d147
-      size: 956
+      size: 994
     params:
       params.yaml:
         base:
@@ -16,16 +16,16 @@ stages:
     outs:
     - path: data/raw/iris.csv
       md5: 4224576f0267bf88902f87f0f6200967
-      size: 2757
+      size: 2908
   featurize:
     cmd: python -m src.stages.featurize --config=params.yaml
     deps:
     - path: data/raw/iris.csv
       md5: 4224576f0267bf88902f87f0f6200967
-      size: 2757
+      size: 2908
     - path: src/stages/featurize.py
       md5: fa1ec29f6ff564a3e3d305aea118be81
-      size: 1292
+      size: 1335
     params:
       params.yaml:
         base:
@@ -39,16 +39,16 @@ stages:
     outs:
     - path: data/processed/featured_iris.csv
       md5: 5d03a1564b3038fc35a842f8e4bde491
-      size: 7260
+      size: 7411
   data_split:
     cmd: python -m src.stages.data_split --config=params.yaml
     deps:
     - path: data/processed/featured_iris.csv
       md5: 5d03a1564b3038fc35a842f8e4bde491
-      size: 7260
+      size: 7411
     - path: src/stages/data_split.py
       md5: 8dfe312ff90160af2ff57f15ac8cb829
-      size: 1298
+      size: 1342
     params:
       params.yaml:
         base:
@@ -64,19 +64,19 @@ stages:
     outs:
     - path: data/processed/test_iris.csv
       md5: b5e45593a772fc66629488e1806505c4
-      size: 1492
+      size: 1523
     - path: data/processed/train_iris.csv
       md5: ed8a7e5ba0a211251bdee6c498fe3eb4
-      size: 5724
+      size: 5845
   train:
     cmd: python -m src.stages.train --config=params.yaml
     deps:
     - path: data/processed/train_iris.csv
       md5: ed8a7e5ba0a211251bdee6c498fe3eb4
-      size: 5724
+      size: 5845
     - path: src/stages/train.py
       md5: 3296dcabf91da3451f6ca3120c0fccac
-      size: 1400
+      size: 1451
     params:
       params.yaml:
         base:
@@ -116,20 +116,20 @@ stages:
           model_path: models/model.joblib
     outs:
     - path: models/model.joblib
-      md5: e0c59fe209aa2682d1baabf5801c2d78
+      md5: 74e8a4b345df6dce21e160aa591c871a
       size: 3027
   evaluate:
     cmd: python -m src.stages.evaluate --config=params.yaml
     deps:
     - path: data/processed/test_iris.csv
       md5: b5e45593a772fc66629488e1806505c4
-      size: 1492
+      size: 1523
     - path: models/model.joblib
-      md5: e0c59fe209aa2682d1baabf5801c2d78
+      md5: 74e8a4b345df6dce21e160aa591c871a
       size: 3027
     - path: src/stages/evaluate.py
       md5: e845a44aa40bffa0b20b08a7d854e999
-      size: 2358
+      size: 2434
     params:
       params.yaml:
         base:
