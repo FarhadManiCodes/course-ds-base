@@ -116,7 +116,7 @@ stages:
           model_path: models/model.joblib
     outs:
     - path: models/model.joblib
-      md5: 2ed6b33995456d24c0ed84eecfdd34ec
+      md5: bf507d4aedf75f4c3596d720de088f89
       size: 3024
   evaluate:
     cmd: python -m src.stages.evaluate --config=params.yaml
@@ -125,7 +125,7 @@ stages:
       md5: b5e45593a772fc66629488e1806505c4
       size: 1492
     - path: models/model.joblib
-      md5: 2ed6b33995456d24c0ed84eecfdd34ec
+      md5: bf507d4aedf75f4c3596d720de088f89
       size: 3024
     - path: src/stages/evaluate.py
       md5: ef91e5d287808f3cef9297a6dad49a41
