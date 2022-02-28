@@ -39,6 +39,7 @@ def train_model(config_path: Text) -> None:
     logger.info('Save model')
     models_path = config['train']['model_path']
     joblib.dump(model, models_path)
+    print('update train.py')
 
 
 if __name__ == '__main__':

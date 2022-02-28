@@ -1,7 +1,7 @@
 stages:
 
   data_load:
-    cmd: python src/stages/data_load.py --config=params.yaml
+    cmd: python -m src.stages.data_load --config=params.yaml
     deps:
     - src/stages/data_load.py
     params:
@@ -11,7 +11,7 @@ stages:
     - data/raw/iris.csv
 
   featurize:
-    cmd: python src/stages/featurize.py --config=params.yaml
+    cmd: python -m src.stages.featurize --config=params.yaml
     deps:
     - data/raw/iris.csv
     - src/stages/featurize.py
@@ -23,7 +23,7 @@ stages:
     - data/processed/featured_iris.csv
 
   data_split:
-    cmd: python src/stages/data_split.py --config=params.yaml
+    cmd: python -m src.stages.data_split --config=params.yaml
     deps:
     - data/processed/featured_iris.csv
     - src/stages/data_split.py
@@ -36,7 +36,7 @@ stages:
     - data/processed/train_iris.csv
 
   train:
-    cmd: python src/stages/train.py --config=params.yaml
+    cmd: python -m src.stages.train --config=params.yaml
     deps:
     - data/processed/train_iris.csv
     - src/stages/train.py
@@ -49,7 +49,7 @@ stages:
     - models/model.joblib
 
   evaluate:
-    cmd: python src/stages/evaluate.py --config=params.yaml
+    cmd: python -m src.stages.evaluate --config=params.yaml
     deps:
     - data/processed/test_iris.csv
     - models/model.joblib
@@ -61,7 +61,7 @@ stages:
     - featurize.target_column
     outs:
     - reports/confusion_matrix.png
-    - reports/confusion_matrix_data.csv
     metrics:
     - reports/metrics.json:
         cache: false
+
