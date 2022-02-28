@@ -1,12 +1,13 @@
 import argparse
-import joblib
 import json
-import pandas as pd
 from pathlib import Path
+from typing import Text
+
+import joblib
+import pandas as pd
+import yaml
 from sklearn.datasets import load_iris
 from sklearn.metrics import confusion_matrix, f1_score
-from typing import Text, Dict
-import yaml
 
 from src.report.visualize import plot_confusion_matrix
 from src.utils.logs import get_logger
@@ -31,7 +32,7 @@ def evaluate_model(config_path: Text) -> None:
     test_df = pd.read_csv(config['data_split']['testset_path'])
 
     logger.info('Evaluate (build report)')
-    target_column=config['featurize']['target_column']
+    target_column = config['featurize']['target_column']
     y_test = test_df.loc[:, target_column].values
     X_test = test_df.drop(target_column, axis=1).values
 
@@ -68,7 +69,6 @@ def evaluate_model(config_path: Text) -> None:
 
 
 if __name__ == '__main__':
-
     args_parser = argparse.ArgumentParser()
     args_parser.add_argument('--config', dest='config', required=True)
     args = args_parser.parse_args()

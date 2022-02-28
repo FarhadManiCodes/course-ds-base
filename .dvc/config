@@ -1,0 +1,6 @@
+[core]
+    remote = myremote
+['remote "my_local_remote"']
+    url = /tmp/dvc
+['remote "myremote"']
+    url = https://console.aws.amazon.com/s3/buckets/test-dvc-farhad?region=eu-west-2
