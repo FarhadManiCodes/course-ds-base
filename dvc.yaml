@@ -61,6 +61,11 @@ stages:
     - featurize.target_column
     outs:
     - reports/confusion_matrix.png
+    plots:
+    - reports/confusion_matrix_data.csv:
+        template: confusion
+        x: predicted
+        y: y_true
     metrics:
     - reports/metrics.json:
         cache: false
