@@ -93,6 +93,7 @@ stages:
                 C:
                 - 0.0001
                 - 0.001
+                - 0.1
                 max_iter:
                 - 10
                 solver:
@@ -115,8 +116,8 @@ stages:
           model_path: models/model.joblib
     outs:
     - path: models/model.joblib
-      md5: d39ac161a57c0fb50cee8296d0e4e1a3
-      size: 2888
+      md5: 6200cf799b74cc4ba20097c9224814d5
+      size: 3027
   evaluate:
     cmd: python -m src.stages.evaluate --config=params.yaml
     deps:
@@ -124,8 +125,8 @@ stages:
       md5: b5e45593a772fc66629488e1806505c4
       size: 1492
     - path: models/model.joblib
-      md5: d39ac161a57c0fb50cee8296d0e4e1a3
-      size: 2888
+      md5: 6200cf799b74cc4ba20097c9224814d5
+      size: 3027
     - path: src/stages/evaluate.py
       md5: ef91e5d287808f3cef9297a6dad49a41
       size: 2354
@@ -142,8 +143,8 @@ stages:
         featurize.target_column: target
     outs:
     - path: reports/confusion_matrix.png
-      md5: 64609d4d2fe8d2718531f253d881dde6
-      size: 24999
+      md5: 22d55154d10818eb51520e947cfc7e62
+      size: 24920
     - path: reports/metrics.json
-      md5: d533847a0ca14ca93752b1b1f1df349e
-      size: 32
+      md5: 3329ba1a6b18407f725a1e25a5500560
+      size: 17
