@@ -93,6 +93,7 @@ stages:
                 C:
                 - 0.0001
                 - 0.001
+                - 0.1
                 max_iter:
                 - 10
                 solver:
@@ -116,7 +117,7 @@ stages:
           model_path: models/model.joblib
     outs:
     - path: models/model.joblib
-      md5: d7b41a563a48ebe3ce2ad66f9c49ade9
+      md5: 20be7d6cd8d50292971baeb714945e0e
       size: 14187
   evaluate:
     cmd: python -m src.stages.evaluate --config=params.yaml
@@ -125,7 +126,7 @@ stages:
       md5: 69766ba03a1a4a3cf735a8ffc48491e1
       size: 1739
     - path: models/model.joblib
-      md5: d7b41a563a48ebe3ce2ad66f9c49ade9
+      md5: 20be7d6cd8d50292971baeb714945e0e
       size: 14187
     - path: src/stages/evaluate.py
       md5: 5589d607ffe0a7e4d82084b7377c9c78
