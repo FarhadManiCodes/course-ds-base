@@ -22,7 +22,7 @@ data_split:
 train:
 
   cv: 4
-  estimator_name: logreg
+  estimator_name: svm
   estimators:
     logreg: # sklearn.linear_model.LogisticRegression
       param_grid: # params of GridSearchCV constructor
