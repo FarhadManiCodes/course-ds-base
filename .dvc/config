@@ -1,5 +1,6 @@
 [core]
     remote = my_local_remote
+    autostage = true
 ['remote "my_local_remote"']
     url = /tmp/dvc
 ['remote "myremote"']
