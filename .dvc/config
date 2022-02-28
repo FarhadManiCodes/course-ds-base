@@ -1,5 +1,5 @@
 [core]
-    remote = myremote
+    remote = my_local_remote
 ['remote "my_local_remote"']
     url = /tmp/dvc
 ['remote "myremote"']

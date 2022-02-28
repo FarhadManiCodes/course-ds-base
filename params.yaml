@@ -14,7 +14,7 @@ featurize:
 
 
 data_split:
-  test_size: 0.2
+  test_size: 0.24
   trainset_path: 'data/processed/train_iris.csv'
   testset_path: 'data/processed/test_iris.csv'
 
@@ -22,7 +22,7 @@ data_split:
 train:
 
   cv: 4
-  estimator_name: svm
+  estimator_name: logreg
   estimators:
     logreg: # sklearn.linear_model.LogisticRegression
       param_grid: # params of GridSearchCV constructor
@@ -35,7 +35,7 @@ train:
         C: [0.001, 0.00001]
         kernel: ['rbf', 'linear']
         gamma: ['scale']
-        degree: [4, 5]
+        degree: [3 ,4, 5]
   model_path: models/model.joblib
 
 
